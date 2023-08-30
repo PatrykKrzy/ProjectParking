@@ -24,6 +24,11 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        ProccessMovement();
+    }
+
+    private void ProccessMovement()
+    {
         float moveInput = Input.GetAxis("Vertical");
         float rotationInput = Input.GetAxis("Horizontal");
 
