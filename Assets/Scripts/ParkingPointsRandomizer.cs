@@ -6,6 +6,8 @@ public class ParkingPointsRandomizer : MonoBehaviour
 {
     [SerializeField] private ParkingPoint[] parkingPoints;
 
+    private ParkingPoint currentPoint;
+
     private void Start()
     {
         foreach (var parkingPoint in parkingPoints)
@@ -17,8 +19,12 @@ public class ParkingPointsRandomizer : MonoBehaviour
 
     public void ActivateRandomizedPoint()
     {
-        int randomizedIndex = Random.Range(0, parkingPoints.Length);
-        ParkingPoint randomizedPoint = parkingPoints[randomizedIndex];
-        randomizedPoint.gameObject.SetActive(true);
+        int randomizedIndex; 
+        do
+        {
+            randomizedIndex = Random.Range(0, parkingPoints.Length);
+        } while(currentPoint == parkingPoints[randomizedIndex]);
+        currentPoint = parkingPoints[randomizedIndex];
+        currentPoint.gameObject.SetActive(true);
     }
 }
