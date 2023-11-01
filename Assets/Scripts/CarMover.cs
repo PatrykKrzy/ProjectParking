@@ -26,5 +26,6 @@ public class CarMover : MonoBehaviour
     {
         Debug.Log("Bum");
         collision.rigidbody.AddExplosionForce(20000f, transform.position + Vector3.down * 5f, 15f, 1f, ForceMode.Impulse);
+        collision.gameObject.GetComponent<PlayerController>().Death();
     }
 }
