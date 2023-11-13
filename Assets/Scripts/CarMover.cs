@@ -24,8 +24,9 @@ public class CarMover : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!collision.gameObject.TryGetComponent<PlayerController>(out var playerController)) return;
         Debug.Log("Bum");
         collision.rigidbody.AddExplosionForce(20000f, transform.position + Vector3.down * 5f, 15f, 1f, ForceMode.Impulse);
-        collision.gameObject.GetComponent<PlayerController>().Death();
+        playerController.Death();
     }
 }
