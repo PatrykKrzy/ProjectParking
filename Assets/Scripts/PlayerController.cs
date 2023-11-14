@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private AudioSource explosionAudioSource;
+    [SerializeField] private ParticleSystem explosionParticle;
     [SerializeField] private PrometeoCarController prometeoCarController;
     
     [SerializeField] private float timeToRespawn;
 
     public void Death()
     {
+        explosionAudioSource.Play();
+        explosionParticle.Play();
         prometeoCarController.ResetSpeed();
         prometeoCarController.enabled = false;
         StartCoroutine(RespawnAfterDelay());
